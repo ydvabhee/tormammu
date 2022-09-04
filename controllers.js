@@ -73,6 +73,8 @@ const getTorInfo = async (req, res) => {
   let data = {};
   let l = [];
 
+  data.title = $("div.box-info-heading h1").text();
+
   // select all ul.list
   let lists = $("ul.list");
   // select 2nd list
