@@ -11,10 +11,10 @@ const Scrap1337x = ($) => {
   // get all data from table which has Most Popular Torrents this week in header
   $("table.table-list tbody tr").each(async (i, el) => {
     let torrent = {};
-    torrent.name = $(el).find("td.coll-1.name").text().toLowerCase();
+    torrent.name = $(el).find("td.coll-1.name").text();
 
     // check if torrent name contains bad words
-    if (badword.some((word) => torrent.name.includes(word))) {
+    if (badword.some((word) => torrent.name.toLowerCase().includes(word))) {
       console.log("bad word found >> ", torrent.name);
       return;
     }
