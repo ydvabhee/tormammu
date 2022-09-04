@@ -14,7 +14,7 @@ const Scrap1337x = ($) => {
     torrent.name = $(el).find("td.coll-1.name").text();
 
     // check if torrent name contains bad words
-    if (badword.some((word) => torrent.name.toLowerCase().includes(word))) {
+    if (badword.some((word) => torrent?.name?.toLowerCase()?.includes(word))) {
       console.log("bad word found >> ", torrent.name);
       return;
     }
@@ -116,7 +116,7 @@ const getTorInfo = async (req, res) => {
     let imageResponse = await axios.get(image, {
       responseType: "arraybuffer"
     });
-    data["image"] = imageResponse.data.toString("");
+    data["image"] = imageResponse.data.toString("base64");
   }
 
   let description = $(torrentDetail).text();
