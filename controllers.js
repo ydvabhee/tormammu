@@ -22,7 +22,7 @@ const Scrap1337x = ($) => {
     torrent.seed = $(el).find("td.coll-2").text();
     torrent.leeches = $(el).find("td.coll-3").text();
     torrent.size = $(el).find("td.coll-4").text();
-    torrent.data = $(el).find("td.coll-date").text();
+    torrent.date = $(el).find("td.coll-date").text();
     torrent.uploader = $(el).find("td.coll-5").text();
 
     // load the torrent page to get the magnet link

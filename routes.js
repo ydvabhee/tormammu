@@ -4,7 +4,7 @@ router.get("/", (req, res) => {
   res.send("Hello Routes!");
 });
 
-router.get("/test", controller.test);
+router.get("/trending", controller.test);
 router.get("/getMagnets", controller.getMagnets);
 router.get("/search", controller.search);
 
