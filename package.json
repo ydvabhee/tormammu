@@ -1,0 +1,24 @@
+{
+  "name": "tormammu",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ydvabhee/tormammu",
+  "author": "Abhishek Yadav <34765230+ydvabhee@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.12",
+    "dayjs": "^1.11.5",
+    "express": "^4.18.1",
+    "moment": "^2.29.4",
+    "momentjs": "^2.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
