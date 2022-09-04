@@ -108,7 +108,7 @@ const getTorInfo = async (req, res) => {
   // select image src from torrent-image-wrap
   let image = $(torrentDetail).find("div.torrent-image-wrap img").attr("src");
   // if image loaded from 1377x.to then add base url
-  if (image.startsWith("/")) {
+  if (image && image.startsWith("/")) {
     image = BASE_URL + image;
     //load image
     let imageResponse = await axios.get(image, {
@@ -118,7 +118,7 @@ const getTorInfo = async (req, res) => {
   }
 
   let description = $(torrentDetail).text();
-  data["description"] = description;
+  data["description"] = description ?? "";
 
   // select torrent-category clearfix
 
