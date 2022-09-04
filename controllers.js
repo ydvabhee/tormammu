@@ -114,9 +114,9 @@ const getTorInfo = async (req, res) => {
     image = BASE_URL + image;
     //load image
     let imageResponse = await axios.get(image, {
-      responseType: "blob"
+      responseType: "arraybuffer"
     });
-    data["image"] = imageResponse.data;
+    data["image"] = imageResponse.data.toString("");
   }
 
   let description = $(torrentDetail).text();
