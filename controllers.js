@@ -172,8 +172,16 @@ const createShareLink = async (req, res, db) => {
       res.status(400).send("magnet link is required");
       return;
     }
+
+    // find if link already exists
+    let shareLink = await db.collection("share-link").findOne({ magnetLink });
+    if (shareLink) {
+      res.send({ status: true, magnetId: shareLink.shareId });
+      return;
+    }
+
     const shareId = randomString(6);
-    const shareLink = await db.collection("share-link").insertOne({
+    shareLink = await db.collection("share-link").insertOne({
       magnetLink,
       shareId
     });
