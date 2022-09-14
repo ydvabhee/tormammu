@@ -153,6 +153,59 @@ const search = async (req, res) => {
   }
 };
 
+const randomString = (length) => {
+  let result = "";
+  let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  let charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+};
+
+const createShareLink = async (req, res, db) => {
+  try {
+    const { magnetLink } = req.body;
+
+    if (!magnetLink) {
+      res.status(400).send("magnet link is required");
+      return;
+    }
+    const shareId = randomString(6);
+    const shareLink = await db.collection("share-link").insertOne({
+      magnetLink,
+      shareId
+    });
+
+    res.send({ status: true, magnetId: shareId });
+  } catch (error) {
+    res.send({ status: false, message: error.message });
+  }
+};
+
+const getSharedLink = async (req, res, db) => {
+  try {
+    const { magnetId } = req.query;
+
+    if (!magnetId) {
+      res.status(400).send("magnet link is required");
+      return;
+    }
+
+    let shareLink = await db.collection("share-link").findOne({ shareId: magnetId });
+    if (!shareLink) {
+      res.status(404).send("magnet link not found");
+      return;
+    }
+    res.send({ status: true, magnetLink: shareLink.magnetLink });
+  } catch (error) {
+    res.send({ status: false, message: error.message });
+  }
+};
+
 exports.test = test;
 exports.getMagnets = getTorInfo;
 exports.search = search;
+exports.createShareLink = createShareLink;
+exports.getSharedLink = getSharedLink;
