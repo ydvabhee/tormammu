@@ -11,6 +11,7 @@ const dbName = process.env.DB_NAME;
 
 MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
   if (err) {
+    console.log(err);
     console.log("Error connecting to database");
     return;
   }
