@@ -8,10 +8,11 @@ const { MongoClient } = require("mongodb");
 // Connection URI
 const uri = process.env.MONGO_URI;
 const dbName = process.env.DB_NAME;
+console.log(uri);
 
 MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
   if (err) {
-    console.log(err);
+    console.log({ err });
     // console.log("Error connecting to database");
     return;
   }
