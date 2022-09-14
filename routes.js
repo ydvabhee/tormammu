@@ -20,11 +20,10 @@ MongoClient.connect(uri, { useUnifiedTopology: true }, (err, client) => {
     res.send("Hello Routes!");
   });
 
-  router.get("/trending", controller.test);
-  router.get("/getMagnets", controller.getMagnets);
-  router.get("/search", controller.search);
   router.post("/createShareLink", (req, res) => controller.createShareLink(req, res, db));
   router.get("/getSharedLink", (req, res) => controller.getSharedLink(req, res, db));
 });
-
+router.get("/trending", controller.test);
+router.get("/getMagnets", controller.getMagnets);
+router.get("/search", controller.search);
 module.exports = router;
