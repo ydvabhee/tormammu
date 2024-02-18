@@ -3,11 +3,11 @@ const { load } = require("cheerio");
 const moment = require("moment");
 const badword = require("./bad-word.json");
 
-const BASE_URL = "https://x1337x.se/";
+const BASE_URL = "https://www.1377x.to";
 
 const Scrap1337x = ($) => {
   let torrents = [];
-
+s
   // get all data from table which has Most Popular Torrents this week in header
   $("table.table-list tbody tr").each(async (i, el) => {
     let torrent = {};
