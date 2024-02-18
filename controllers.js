@@ -3,7 +3,7 @@ const { load } = require("cheerio");
 const moment = require("moment");
 const badword = require("./bad-word.json");
 
-const BASE_URL = "https://www.1377x.to";
+const BASE_URL = "https://x1337x.se/";
 
 const Scrap1337x = ($) => {
   let torrents = [];
